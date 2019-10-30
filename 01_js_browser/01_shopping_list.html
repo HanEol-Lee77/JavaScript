@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>My Shopping List</h1>
+  Enter a new item: <input id="item-input" type="text">
+  <button id="add-button">Add Item</button>
+  <ul id="shopping-list">
+
+  </ul>
+
+  <script>
+    const input = document.querySelector('#item-input')
+    const button = document.querySelector('#add-button')
+    const shoppingList = document.querySelector('#shopping-list')
+
+    // button.addEventListner('click', (함수))
+  button.addEventListener ('click', e => {
+      // li라고 하는 객체를 만들어줘야 함.
+      // li 태그의 객체를 만들거야
+      const itemName = input.value
+      input.value = ''
+
+      const item = document.createElement('li')
+      item.innerText = itemName
+
+      const deleteButton = document.createElement('button')
+      deleteButton.innerText = 'delete'
+
+      deleteButton.addEventListener('click', e => {
+        item.remove()
+      })
+
+      item.appendChild(deleteButton)
+
+      shoppingList.appendChild(item)
+    })
+
+  </script>
+</body>
+</html>
+
+<!-- 통제해야 할 상황 : 버튼이 클릭됐을 때, 
+item 버튼에다가 귀를 달아주자
+
+어떤 사건일까?
+
+button.addEventListner('click', (함수)) -->
